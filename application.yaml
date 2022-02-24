@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: nginx=dipayanp007/nginx-se:1.x
+    argocd-image-updater.argoproj.io/nginx.helm.image-name: deploy.image.name
+    argocd-image-updater.argoproj.io/nginx.helm.image-tag: deploy.image.tag
+    argocd-image-updater.argoproj.io/nginx.update-strategy: semver
+    argocd-image-updater.argoproj.io/write-back-method: git:repocreds
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  destination:
+    namespace: nginx-demo
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: charts/nginx
+    repoURL: 'https://github.com/DipayanP007/image-updater-repo-2.git'
+    targetRevision: master
+    helm:
+      valueFiles:
+        - values.yaml
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    - PruneLast=true
+    - FailOnSharedResource=true    
+    retry:
+      limit: 5
+      backoff:
+        duration: '5s'
+        factor: 2
+        maxDuration: '3m'

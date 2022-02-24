@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: {{ .Chart.Name }}-{{ .Release.Name }}-deploy
+    annotations:
+      nginx.chart/version: {{ .Chart.Version }}
+spec:
+    replicas: {{ .Values.deploy.replicas }}
+    selector:
+        matchLabels:
+            app: {{ .Chart.Name }}-{{ .Release.Name }}
+    {{- if .Values.deploy.strategy.custom }}
+    strategy: 
+   {{- include "{{ .Chart.Name }}.strategy" . | indent 6}}
+    {{- end }}
+    template:
+      metadata:
+        labels:
+          app: {{ .Chart.Name }}-{{ .Release.Name }}
+      spec:
+        containers:
+        - image: {{ .Values.deploy.image.name }}:{{ .Values.deploy.image.tag }}
+          name: {{ .Values.deploy.containerName }}
+          imagePullPolicy: {{ .Values.deploy.imagePullPolicy }}
+          ports:
+          - containerPort: {{ .Values.deploy.port }}

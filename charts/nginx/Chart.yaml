@@ -1,0 +1,7 @@
+apiVersion: v1
+name: nginx
+description: Nginx deployment and nodePort service
+keywords:
+- demo
+appVersion: 5.3.1
+version: 5.2.1
