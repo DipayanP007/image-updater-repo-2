@@ -1,0 +1,8 @@
+helm:
+  parameters:
+  - name: deploy.image.name
+    value: dipayanp007/nginx-se
+    forcestring: true
+  - name: deploy.image.tag
+    value: v1.0.2
+    forcestring: true
