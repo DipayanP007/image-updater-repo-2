@@ -20,3 +20,7 @@ service:
   nodePort: 32000
   name: traffic
 
+ingress:
+  host: nginx.qa.devopscloud.link
+  ingressClassName: nginx
+
