@@ -2,17 +2,16 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: nginx
-  annotations:
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
+  namespace: nginx
 spec:
-  ingressClassName: kon
+  ingressClassName: {{ .Values.ingress.ingressClassName }}
   rules:
-  - host: nginx2.minikube.argo
+  - host: {{ .Values.ingress.host }}
     http:
       paths:
       - backend:
           service:
-            name: nginx-nginx-service
+            name: {{ .Chart.Name }}-{{ .Release.Name }}-service
             port:
               number: 80
         path: /
