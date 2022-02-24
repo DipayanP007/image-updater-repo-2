@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: nginx
   # annotations:
-  #   argocd-image-updater.argoproj.io/image-list: nginx=dipayanp007/nginx-se:1.x
+  #   argocd-image-updater.argoproj.io/image-list: nginx=dipayanp007/nginx-se:v1.x
   #   argocd-image-updater.argoproj.io/nginx.helm.image-name: deploy.image.name
   #   argocd-image-updater.argoproj.io/nginx.helm.image-tag: deploy.image.tag
   #   argocd-image-updater.argoproj.io/nginx.update-strategy: semver
