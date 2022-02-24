@@ -21,6 +21,6 @@ service:
   name: traffic
 
 ingress:
-  host: nginx.qa.devopscloud.link
+  host: nginx.minikube.argo
   ingressClassName: nginx
 
