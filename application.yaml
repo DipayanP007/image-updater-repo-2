@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: nginx
-  annotations:
-    argocd-image-updater.argoproj.io/image-list: nginx=dipayanp007/nginx-se:1.x
-    argocd-image-updater.argoproj.io/nginx.helm.image-name: deploy.image.name
-    argocd-image-updater.argoproj.io/nginx.helm.image-tag: deploy.image.tag
-    argocd-image-updater.argoproj.io/nginx.update-strategy: semver
-    argocd-image-updater.argoproj.io/write-back-method: git:repocreds
+  # annotations:
+  #   argocd-image-updater.argoproj.io/image-list: nginx=dipayanp007/nginx-se:1.x
+  #   argocd-image-updater.argoproj.io/nginx.helm.image-name: deploy.image.name
+  #   argocd-image-updater.argoproj.io/nginx.helm.image-tag: deploy.image.tag
+  #   argocd-image-updater.argoproj.io/nginx.update-strategy: semver
+  #   argocd-image-updater.argoproj.io/write-back-method: git:repocreds
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
