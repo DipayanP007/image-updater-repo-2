@@ -4,5 +4,5 @@ helm:
     value: dipayanp007/nginx-se
     forcestring: true
   - name: deploy.image.tag
-    value: v1.0.3
+    value: v1.0.4
     forcestring: true
